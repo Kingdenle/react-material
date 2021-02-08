@@ -42,6 +42,9 @@ module.exports = {
     filename: 'bundle.js',      // 打包后的文件名称
     path: path.resolve('dist')  // 打包后的目录，必须是绝对路径
   },
+  resolve: {
+    extensions: [".ts", ".tsx", ".js", ".jsx", ".json"],
+  },
   mode: 'development',
   devServer: {
     port: 3000,             // 端口
@@ -74,6 +77,25 @@ module.exports = {
           loader: "eslint-loader"
         }
       },
+      // {
+      //   test: /\.less$/,
+      //   use: [
+      //     {
+      //       loader: 'style-loader'
+      //     }, {
+      //       loader: 'css-loader'
+      //     },
+      //     {
+      //       loader: 'less-loader',
+      //       options: {
+      //         javascriptEnabled: true
+      //       }
+      //     }]
+      // },
+      // {
+      //   test: /\.css$/i,
+      //   use: [MiniCssExtractPlugin.loader, "css-loader"]
+      // },
       {
         test: /\.(js|jsx)$/,
         include: [path.resolve(__dirname, 'src')],
@@ -85,17 +107,21 @@ module.exports = {
             "plugins": [
               "@babel/plugin-transform-runtime",
               "@babel/plugin-proposal-object-rest-spread",
+              "@babel/plugin-proposal-class-properties"
             ]
           }
         }
       },
       {
         test: /.(sa|sc|c)ss$/,
-
         use: [
           {
-            loader: MiniCssExtractPlugin.loader
-          }, {
+            loader: 'style-loader'
+          },
+          // {
+          //   loader: MiniCssExtractPlugin.loader
+          // }, 
+          {
             loader: "css-loader",
 
             options: {
@@ -110,19 +136,25 @@ module.exports = {
           },
         ]
       },
-      {
-        test: /\.css$/,
-        use: [
-          "style-loader",
-          {
-            loader: "css-loader",
-            options: {
-              // modules: true
-            }
-          }
-          // 'postcss-loader'
-        ]
-      },
+      // {
+      //   test: /\.(sa|sc|c)ss$/,
+      //   use: [
+      //     "style-loader",
+      //     {
+      //       loader: "css-loader",
+      //       options: {
+      //         // modules: true
+      //       }
+      //     }, {
+      //       loader: "sass-loader",
+
+      //       options: {
+      //         sourceMap: true
+      //       },
+      //     }
+      //     // 'postcss-loader'
+      //   ]
+      // },
       {
         test: /\.(png|jpg|gif|svg)$/,
         use: {

@@ -4,6 +4,8 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "./redux/store";
 import Entry from "./container/entry";
+import 'antd/dist/antd.css';
+import "./style/common.scss";
 
 const router = (
     <Provider store={store}>

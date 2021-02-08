@@ -4,7 +4,6 @@ yarn-error.log
 package-lock.json
 .vscode/
 .DS_Store
-packages/ui-toolkit
 packages/server/server/sessions
 .cache
 lerna-debug.log
